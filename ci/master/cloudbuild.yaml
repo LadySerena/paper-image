@@ -8,7 +8,7 @@ steps:
     args:
       - 'cp'
       - 'gs://serena-minecraft-platform-debian-repo/paper-mc_1.15.2-1_amd64.deb'
-      - 'minecraft.deb'
+      - 'paper.deb'
   - name: 'gcr.io/minecraft-server-tiede/packer-builder:latest'
     args:
       - 'validate'
