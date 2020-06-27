@@ -1,0 +1,21 @@
+steps:
+  - name: 'gcr.io/minecraft-server-tiede/sops-builder:latest'
+    entrypoint: 'bash'
+    args:
+      - './desops.sh'
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gsutil
+    args:
+      - 'cp'
+      - 'gs://serena-minecraft-platform-debian-repo/paper-mc_1.15.2-1_amd64.deb'
+      - 'minecraft.deb'
+  - name: 'gcr.io/minecraft-server-tiede/packer-builder:latest'
+    args:
+      - 'validate'
+      - 'paper.json'
+  - name: 'gcr.io/minecraft-server-tiede/packer-builder:latest'
+    env:
+      - GOOGLE_APPLICATION_CREDENTIALS=secrets/decrypted/packer-sa.json
+    args:
+      - 'build'
+      - 'paper.json'

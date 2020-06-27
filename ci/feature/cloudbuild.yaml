@@ -1,0 +1,11 @@
+steps:
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gsutil
+    args:
+      - 'cp'
+      - 'gs://serena-minecraft-platform-debian-repo/paper-mc_1.15.2-1_amd64.deb'
+      - 'paper.deb'
+  - name: 'gcr.io/minecraft-server-tiede/packer-builder:latest'
+    args:
+      - 'validate'
+      - 'paper.json'

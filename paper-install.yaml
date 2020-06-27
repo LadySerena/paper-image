@@ -1,0 +1,15 @@
+- name: configure paper image
+  hosts: all
+  become: true
+  tasks:
+    - name: install paper-mc from deb package
+      register: apt_status
+      until: apt_status is success
+      delay: 6
+      retries: 10
+      apt:
+        deb: /tmp/paper.deb
+    - name: remove deb package file
+      file:
+        path: /tmp/paper.deb
+        state: absent

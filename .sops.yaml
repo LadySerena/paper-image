@@ -1,0 +1,4 @@
+creation_rules:
+  - path_regex: .*/secrets/.*
+    gcp_kms: projects/minecraft-server-tiede/locations/global/keyRings/sops/cryptoKeys/sops-key
+  - gcp_kms: projects/minecraft-server-tiede/locations/global/keyRings/sops/cryptoKeys/sops-key
