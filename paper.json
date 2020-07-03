@@ -3,7 +3,7 @@
     {
       "type": "googlecompute",
       "project_id": "minecraft-server-tiede",
-      "image_name": "paper-mc-{{timestamp}}",
+      "image_name": "paper-mc-1.16.1-{{timestamp}}",
       "image_description": "paper-mc image",
       "source_image_family": "serena-base-debian-10",
       "image_family": "serena-minecraft",
