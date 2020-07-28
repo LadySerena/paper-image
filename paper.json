@@ -16,12 +16,23 @@
   "provisioners": [
     {
       "type": "file",
+      "source": "world.tar.gz",
+      "destination": "/tmp/world.tar.gz"
+    },
+    {
+      "type": "file",
       "source": "paper.deb",
       "destination": "/tmp/paper.deb"
     },
     {
       "type": "ansible-local",
       "playbook_file": "paper-install.yaml"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "ls -alh /minecraft-data/"
+      ]
     }
   ]
 }
