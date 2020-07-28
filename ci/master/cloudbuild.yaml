@@ -3,11 +3,15 @@ steps:
     entrypoint: 'bash'
     args:
       - './desops.sh'
+  - name: 'gcr.io/minecraft-server-tiede/world-downloader-builder:latest'
+    args:
+      - '-bucket'
+      - 'tiede-minecraft-world-bucket'
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     entrypoint: gsutil
     args:
       - 'cp'
-      - 'gs://serena-minecraft-platform-debian-repo/paper-mc_1.16.1-2_amd64.deb'
+      - 'gs://serena-minecraft-platform-debian-repo/paper-mc_1.16.1-3_amd64.deb'
       - 'paper.deb'
   - name: 'gcr.io/minecraft-server-tiede/packer-builder:latest'
     args:
