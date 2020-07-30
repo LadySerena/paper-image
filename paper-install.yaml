@@ -13,3 +13,7 @@
       file:
         path: /tmp/paper.deb
         state: absent
+    - name: unarchive world
+      unarchive:
+        src: /tmp/world.tar.gz
+        dest: /minecraft-data/
