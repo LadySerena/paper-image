@@ -5,6 +5,10 @@ steps:
       - 'cp'
       - 'gs://serena-minecraft-platform-debian-repo/paper-mc_1.16.1-2_amd64.deb'
       - 'paper.deb'
+  - name: 'gcr.io/minecraft-server-tiede/world-downloader-builder:latest'
+    args:
+      - '-bucket'
+      - 'tiede-minecraft-world-bucket'
   - name: 'gcr.io/minecraft-server-tiede/packer-builder:latest'
     args:
       - 'validate'
