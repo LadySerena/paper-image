@@ -13,7 +13,9 @@
       file:
         path: /tmp/paper.deb
         state: absent
+    #        the archive is minecraft-data so the expected path for world data must be /minecraft-data hence the destination
+    #        being root
     - name: unarchive world
       unarchive:
         src: /tmp/world.tar.gz
-        dest: /minecraft-data/
+        dest: /
