@@ -7,18 +7,13 @@
       "image_description": "paper-mc image",
       "source_image_family": "serena-base-debian-10",
       "image_family": "serena-minecraft",
-      "disk_size": 40,
+      "disk_size": 20,
       "disk_type": "pd-ssd",
       "ssh_username": "packer",
       "zone": "us-central1-a"
     }
   ],
   "provisioners": [
-    {
-      "type": "file",
-      "source": "./world.tar.gz",
-      "destination": "/tmp/world.tar.gz"
-    },
     {
       "type": "file",
       "source": "./paper.deb",
