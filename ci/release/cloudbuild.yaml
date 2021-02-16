@@ -1,0 +1,19 @@
+steps:
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gsutil
+    args:
+      - 'cp'
+      - "gs://${_BUCKET}/${_PACKAGE_NAME}_${TAG_NAME}_amd64.deb"
+      - 'paper.deb'
+  - name: "hashicorp/packer:${_PACKER_VERSION}"
+    args:
+      - 'validate'
+      - 'paper.json'
+  - name: "hashicorp/packer:${_PACKER_VERSION}"
+    args:
+      - 'build'
+      - 'paper.json'
+substitutions:
+  _BUCKET: debian-v1.platform.serenacodes.com
+  _PACKAGE_NAME: paper-mc
+  _PACKER_VERSION: 1.6.6
