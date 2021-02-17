@@ -48,6 +48,10 @@ build {
     destination = "/tmp/paper.deb"
     source      = "./paper.deb"
   }
+  provisioner "file" {
+    destination = "/tmp/dbus-api.deb"
+    source      = "./dbus-api.deb"
+  }
   provisioner "ansible-local" {
     extra_arguments = ["--extra-vars", "ansible_python_interpreter=/usr/bin/python3"]
     playbook_file   = "paper-install.yaml"

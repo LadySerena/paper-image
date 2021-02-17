@@ -9,9 +9,20 @@
       retries: 10
       apt:
         deb: /tmp/paper.deb
+    - name: install dbus-api from package
+      register: dbus_install_status
+      until: dbus_install_status in success
+      delay: 6
+      retries: 10
+      apt:
+        deb: /tmp/dbus-api.deb
     - name: remove deb package file
       file:
         path: /tmp/paper.deb
+        state: absent
+    - name: remove dbus api deb
+      file:
+        path: /tmp/dbus-api.deb
         state: absent
     #        the archive is minecraft-data so the expected path for world data must be /minecraft-data hence the destination
     #        being root
