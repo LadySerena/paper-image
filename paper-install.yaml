@@ -11,7 +11,7 @@
         deb: /tmp/paper.deb
     - name: install dbus-api from package
       register: dbus_install_status
-      until: dbus_install_status in success
+      until: dbus_install_status is success
       delay: 6
       retries: 10
       apt:
