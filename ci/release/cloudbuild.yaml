@@ -3,17 +3,29 @@ steps:
     entrypoint: gsutil
     args:
       - 'cp'
-      - "gs://${_BUCKET}/${_PACKAGE_NAME}_${TAG_NAME}_amd64.deb"
+      - "gs://${_BUCKET}/${_MINECRAFT_PACKAGE}_${_MINECRAFT_VERSION}_amd64.deb"
       - 'paper.deb'
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gsutil
+    args:
+      - 'cp'
+      - "gs://${_BUCKET}/${_DBUS_API_PACKAGE}_${_DBUS_API_VERSION}_amd64.deb"
+      - 'dbus-api.deb'
   - name: "hashicorp/packer:${_PACKER_VERSION}"
     args:
       - 'validate'
-      - 'paper.json'
+      - 'paper.json.pkr.hcl'
   - name: "hashicorp/packer:${_PACKER_VERSION}"
     args:
       - 'build'
-      - 'paper.json'
+      - '-var'
+      - "tag=$TAG_NAME"
+      - 'paper.json.pkr.hcl'
 substitutions:
   _BUCKET: debian-v1.platform.serenacodes.com
-  _PACKAGE_NAME: paper-mc
+  _MINECRAFT_PACKAGE: paper-mc
+  _MINECRAFT_VERSION: 1.16.5-2
+  _DBUS_API_PACKAGE: dbus-api
+  _DBUS_API_VERSION: 3.0.0-1
   _PACKER_VERSION: 1.6.6
+
