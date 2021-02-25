@@ -18,7 +18,7 @@ steps:
 substitutions:
   _BUCKET: debian-v1.platform.serenacodes.com
   _MINECRAFT_PACKAGE: paper-mc
-  _MINECRAFT_VERSION: 1.16.5-3
+  _MINECRAFT_VERSION: 1.16.5-4
   _DBUS_API_PACKAGE: dbus-api
   _DBUS_API_VERSION: 3.0.0-2
   _PACKER_VERSION: 1.6.6
